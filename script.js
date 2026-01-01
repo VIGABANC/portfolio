@@ -285,10 +285,10 @@ Available commands:
 +-------------------------------------------+
 |             DEVELOPER PROFILE             |
 +-------------------------------------------+
-| Name:     Oussama Zahid                   |
-| Role:     Full-Stack Dev | Analyste Cyber |
-| Location: Fquih Ben Salah                 |
-| Status:   Available for opportunities     |
+| Name:      Oussama Zahid                  |
+| Role:      Full-Stack Dev | Analyste      |
+| Location:  Fquih Ben Salah                |
+| Status:    Open to opportunities          |
 +-------------------------------------------+
 `.trim(),
 
@@ -512,50 +512,61 @@ Available commands:
     const canvas = document.getElementById('matrix-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
 
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
+        // Handle high DPI
+        const dpr = window.devicePixelRatio || 1;
 
-        for (let x = 0; x < columns; x++) {
-            drops[x] = 1;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+            ctx.scale(dpr, dpr);
         }
+        resizeCanvas();
+
+        const characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*';
+        const fontSize = 14;
+        let columns = window.innerWidth / fontSize;
+        let drops = [];
+
+        function initDrops() {
+            columns = Math.ceil(window.innerWidth / fontSize);
+            drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = Math.random() * -100; // Randomize start to prevent "curtain" effect
+            }
+        }
+        initDrops();
 
         function drawMatrix() {
-            ctx.fillStyle = 'rgba(1, 4, 9, 0.15)'; // Slightly darker trail
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(1, 4, 9, 0.1)';
+            ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
-            ctx.fillStyle = '#0ea5e9'; // Cyan
             ctx.font = fontSize + 'px monospace';
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = '#0ea5e9';
 
             for (let i = 0; i < drops.length; i++) {
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));
+
+                const colorSeed = Math.random();
+                const opacity = Math.random() * 0.6 + 0.4;
+
+                if (colorSeed > 0.98) ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                else if (colorSeed > 0.8) ctx.fillStyle = `rgba(14, 165, 233, ${opacity})`;
+                else ctx.fillStyle = `rgba(16, 185, 129, ${opacity})`;
+
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
-                drops[i]++;
+                drops[i] += 1;
             }
         }
 
-        setInterval(drawMatrix, 33);
+        let matrixInterval = setInterval(drawMatrix, 35);
 
         window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            // Recalculate columns if width changes significantly
-            const newColumns = canvas.width / fontSize;
-            if (newColumns > drops.length) {
-                for (let i = drops.length; i < newColumns; i++) {
-                    drops[i] = 1;
-                }
-            }
+            resizeCanvas();
+            initDrops();
         });
     }
 });

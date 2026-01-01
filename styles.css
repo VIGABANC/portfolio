@@ -453,7 +453,7 @@ canvas#matrix-canvas {
     height: 18rem;
     padding: 1.25rem;
     overflow-y: auto;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -462,6 +462,7 @@ canvas#matrix-canvas {
     text-align: left;
     scrollbar-width: thin;
     scrollbar-color: #8b949e #010409;
+    font-family: 'Roboto Mono', 'Courier New', monospace !important;
 }
 
 .terminal-body::-webkit-scrollbar {
