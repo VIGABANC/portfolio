@@ -286,7 +286,7 @@ Available commands:
 |             DEVELOPER PROFILE             |
 +-------------------------------------------+
 | Name:      Oussama Zahid                  |
-| Role:      Full-Stack Dev | Analyste      |
+| Role:      Full-Stack Dev | Analyste Cyber|
 | Location:  Fquih Ben Salah                |
 | Status:    Open to opportunities          |
 +-------------------------------------------+
