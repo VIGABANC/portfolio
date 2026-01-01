@@ -1,0 +1,11 @@
+# OS junk
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Local build/temp
+dist/
+node_modules/

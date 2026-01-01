@@ -1,503 +1,543 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oussama Zahid | Cybersecurity & Full-Stack Developer</title>
-  <meta name="description" content="Portfolio — Oussama Zahid, Cybersecurity Analyst & Web Full-Stack Developer" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Nexus | Full-Stack Web & Security Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body>
-  <!-- matrix canvas background -->
-  <canvas id="matrix-canvas"></canvas>
+<body class="bg-background text-foreground font-mono">
+    <!-- Matrix Background -->
+    <canvas id="matrix-canvas"></canvas>
 
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <span class="neon-text-cyan">&gt;_</span>
-        <span class="logo-text">&lt;DEV/&gt;</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#skills">SKILLS</a></li>
-        <li><a href="#projects">PROJECTS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo neon-text-cyan">
+                    <i class="fas fa-terminal icon-text"></i>
+                    <span>&lt;DEV/&gt;</span>
+                </a>
+
+                <div class="nav-links desktop-only">
+                    <a href="#home">HOME</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#skills">SKILLS</a>
+                    <a href="#projects">PROJECTS</a>
+                    <a href="#contact">CONTACT</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="mobile-only" aria-label="Toggle menu">
+                    <i class="fas fa-bars menu-icon"></i>
+                    <i class="fas fa-xmark close-icon hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu">
+            <div class="mobile-links">
+                <a href="#home"><span>&gt;</span> HOME</a>
+                <a href="#about"><span>&gt;</span> ABOUT</a>
+                <a href="#skills"><span>&gt;</span> SKILLS</a>
+                <a href="#projects"><span>&gt;</span> PROJECTS</a>
+                <a href="#contact"><span>&gt;</span> CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="OUSSAMA ZAHID">OUSSAMA ZAHID</h1>
+                <p class="hero-subtitle">
+                    <span class="text-accent">&lt;</span>
+                    Full-Stack Web & Security Developer
+                    <span class="text-accent">/&gt;</span>
+                </p>
+                <p class="hero-description">
+                    Building secure, scalable applications and protecting digital assets.<br>
+                    <span class="text-primary animate-text-glow">Ready to secure your next project.</span>
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary btn-glow">
+                        <i class="fas fa-folder-open icon-sm"></i>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-glow">
+                        <i class="fas fa-envelope icon-sm"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal -->
+            <div class="terminal-container">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="window-controls">
+                            <div class="control close"></div>
+                            <div class="control minimize"></div>
+                            <div class="control maximize"></div>
+                        </div>
+                        <span class="terminal-title">terminal@portfolio:~</span>
+                    </div>
+                    <div id="terminal-body" class="terminal-body">
+                        <!-- History will be injected here -->
+                        <div class="output-line">Welcome to the Terminal v1.0.0</div>
+                        <div class="output-line">Type "help" for available commands.</div>
+                        <div class="output-line">&nbsp;</div>
+
+                        <form id="terminal-form" class="input-line">
+                            <span class="prompt">$</span>
+                            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-indicator animate-bounce">
+                <i class="fas fa-arrow-down icon-lg"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section py-20">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;About Me /&gt;</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-visual">
+                        <div class="profile-frame">
+                            <div class="frame-glow animate-glow-pulse"></div>
+                            <div class="frame-inner"></div>
+                            <div class="profile-placeholder">
+                                <img src="PROFILE.png" alt="Oussama Zahid" class="profile-img">
+                            </div>
+                            <div class="decor-box decor-tr animate-pulse"></div>
+                            <div class="decor-circle decor-bl animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    <div class="about-content">
+                        <div class="terminal-box">
+                            <div class="box-header">
+                                <span class="text-primary">$</span> cat about.md
+                            </div>
+                            <h3>Professional Summary</h3>
+                            <p>A passionate <span class="text-primary">Full-Stack Developer</span> with a strong focus
+                                on <span class="text-accent">cybersecurity</span>. I specialize in building secure,
+                                scalable web applications while implementing robust security measures to protect against
+                                modern threats.</p>
+                            <p>My approach combines clean, efficient code with security-first thinking. Whether it's
+                                developing a complex web application or conducting penetration testing, I bring the same
+                                level of dedication and attention to detail.</p>
+                        </div>
+
+                        <div class="highlights-grid">
+                            <div class="cyber-card">
+                                <i class="fas fa-code icon-text text-primary"></i>
+                                <span>Full-Stack Development</span>
+                            </div>
+                            <div class="cyber-card">
+                                <i class="fas fa-shield-halved icon-text text-primary"></i>
+                                <span>Cybersecurity Expert</span>
+                            </div>
+                            <div class="cyber-card">
+                                <i class="fas fa-user-shield icon-text text-primary"></i>
+                                <span>Secure Code Practices</span>
+                            </div>
+                            <div class="cyber-card">
+                                <i class="fas fa-cloud icon-text text-primary"></i>
+                                <span>DevOps & Infrastructure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section py-20 bg-card-muted">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;Skills & Education /&gt;</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="tab-switcher">
+                    <button id="skills-tab-btn" class="active">Technical Skills</button>
+                    <button id="curriculum-tab-btn">Curriculum</button>
+                </div>
+
+                <div id="skills-content" class="tab-content active">
+                    <div class="skills-grid">
+                        <!-- Skills will be generated here or hardcoded -->
+                        <div class="cyber-card skill-item" style="--level: 90%;">
+                            <div class="skill-info">
+                                <i class="fab fa-react icon-text text-primary"></i>
+                                <span>React / Next.js</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Frontend</span>
+                                <span class="percent">90%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 85%;">
+                            <div class="skill-info">
+                                <i class="fas fa-code-branch icon-text text-primary"></i>
+                                <span>TypeScript</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Frontend</span>
+                                <span class="percent: 85%">85%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 85%;">
+                            <div class="skill-info">
+                                <i class="fab fa-node-js icon-text text-primary"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Backend</span>
+                                <span class="percent">85%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 80%;">
+                            <div class="skill-info">
+                                <i class="fab fa-python icon-text text-primary"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Backend</span>
+                                <span class="percent">80%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 75%;">
+                            <div class="skill-info">
+                                <i class="fas fa-database icon-text text-primary"></i>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Database</span>
+                                <span class="percent">75%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 70%;">
+                            <div class="skill-info">
+                                <i class="fab fa-docker icon-text text-primary"></i>
+                                <span>Docker</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">DevOps</span>
+                                <span class="percent">70%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 85%;">
+                            <div class="skill-info">
+                                <i class="fab fa-linux icon-text text-primary"></i>
+                                <span>Linux</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Systems</span>
+                                <span class="percent">85%</span>
+                            </div>
+                        </div>
+                        <div class="cyber-card skill-item" style="--level: 90%;">
+                            <div class="skill-info">
+                                <i class="fab fa-git-alt icon-text text-primary"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="bar-fill"></div>
+                            </div>
+                            <div class="skill-footer">
+                                <span class="category">Tools</span>
+                                <span class="percent">90%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="curriculum-content" class="tab-content">
+                    <div class="curriculum-grid">
+                        <div class="terminal-box">
+                            <div class="box-header">
+                                <div class="dot neon-bg-accent"></div>
+                                <h3 class="text-accent">Core Fundamentals</h3>
+                            </div>
+                            <div class="curriculum-list">
+                                <div class="curr-item"><span class="num">01</span> <i class="fas fa-network-wired"></i>
+                                    <span>Network Protocols & Architecture</span>
+                                </div>
+                                <div class="curr-item"><span class="num">02</span> <i class="fas fa-laptop-code"></i>
+                                    <span>Linux System Administration</span>
+                                </div>
+                                <div class="curr-item"><span class="num">03</span> <i class="fas fa-code"></i>
+                                    <span>Programming Fundamentals</span>
+                                </div>
+                                <div class="curr-item"><span class="num">04</span> <i class="fas fa-database"></i>
+                                    <span>Database Management</span>
+                                </div>
+                                <div class="curr-item"><span class="num">05</span> <i class="fas fa-globe"></i>
+                                    <span>Web Technologies</span>
+                                </div>
+                                <div class="curr-item"><span class="num">06</span> <i class="fas fa-microchip"></i>
+                                    <span>Operating Systems</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terminal-box">
+                            <div class="box-header">
+                                <div class="dot neon-bg-primary"></div>
+                                <h3 class="text-primary">Cybersecurity Specialization</h3>
+                            </div>
+                            <div class="curriculum-list">
+                                <div class="curr-item"><span class="num">01</span> <i class="fas fa-user-secret"></i>
+                                    <span>Ethical Hacking & Pen Testing</span>
+                                </div>
+                                <div class="curr-item"><span class="num">02</span> <i class="fas fa-bug"></i>
+                                    <span>Malware Analysis</span>
+                                </div>
+                                <div class="curr-item"><span class="num">03</span> <i
+                                        class="fas fa-triangle-exclamation"></i> <span>Incident Response</span></div>
+                                <div class="curr-item"><span class="num">04</span> <i class="fas fa-file-contract"></i>
+                                    <span>Security Auditing</span>
+                                </div>
+                                <div class="curr-item"><span class="num">05</span> <i class="fas fa-key"></i>
+                                    <span>Cryptographic Systems</span>
+                                </div>
+                                <div class="curr-item"><span class="num">06</span> <i class="fas fa-satellite-dish"></i>
+                                    <span>Threat Intelligence</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section py-20">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;Projects /&gt;</h2>
+                    <div class="header-line"></div>
+                    <p class="section-desc">A showcase of my security-focused web development projects</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="cyber-card project-card">
+                        <div class="project-image">
+                            <i class="fas fa-shield-halved icon-xl text-primary"></i>
+                            <div class="glitch-overlay"></div>
+                            <div class="scanlines"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>SecureAuth Platform <span class="title-line"></span></h3>
+                            <p>A robust authentication system with multi-factor authentication, JWT tokens, and
+                                role-based access control.</p>
+                            <div class="tags">
+                                <span>React</span><span>Node.js</span><span>PostgreSQL</span><span>JWT</span>
+                            </div>
+                            <div class="project-btns">
+                                <a href="#" class="btn btn-outline btn-sm">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-external-link-alt"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cyber-card project-card">
+                        <div class="project-image">
+                            <i class="fas fa-tower-broadcast icon-xl text-primary"></i>
+                            <div class="glitch-overlay"></div>
+                            <div class="scanlines"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Network Monitor <span class="title-line"></span></h3>
+                            <p>Real-time network traffic monitoring tool with anomaly detection and alerting system.</p>
+                            <div class="tags">
+                                <span>Python</span><span>React</span><span>WebSocket</span><span>Docker</span>
+                            </div>
+                            <div class="project-btns">
+                                <a href="#" class="btn btn-outline btn-sm">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-external-link-alt"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cyber-card project-card">
+                        <div class="project-image">
+                            <i class="fas fa-magnifying-glass-chart icon-xl text-primary"></i>
+                            <div class="glitch-overlay"></div>
+                            <div class="scanlines"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Vulnerability Scanner <span class="title-line"></span></h3>
+                            <p>Automated security scanning tool for web applications that identifies common
+                                vulnerabilities.</p>
+                            <div class="tags">
+                                <span>Python</span><span>Security</span><span>API</span><span>CLI</span>
+                            </div>
+                            <div class="project-btns">
+                                <a href="#" class="btn btn-outline btn-sm">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-external-link-alt"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cyber-card project-card">
+                        <div class="project-image">
+                            <i class="fas fa-comment-dots icon-xl text-primary"></i>
+                            <div class="glitch-overlay"></div>
+                            <div class="scanlines"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Encrypted Chat App <span class="title-line"></span></h3>
+                            <p>End-to-end encrypted messaging application with perfect forward secrecy.</p>
+                            <div class="tags">
+                                <span>React</span><span>Node.js</span><span>WebSocket</span><span>Crypto</span>
+                            </div>
+                            <div class="project-btns">
+                                <a href="#" class="btn btn-outline btn-sm">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-external-link-alt"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section py-20 bg-card-muted relative overflow-hidden">
+            <div class="scanlines opacity-30"></div>
+            <div class="container relative z-10">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;Contact /&gt;</h2>
+                    <div class="header-line"></div>
+                    <p class="section-desc">Ready to collaborate? Let's build something secure together.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="terminal-box">
+                            <div class="box-header">
+                                <span class="text-primary">$</span> cat contact_info.json
+                            </div>
+                            <div class="json-content font-mono text-sm">
+                                <div class="line"><span class="text-primary">{</span></div>
+                                <div class="line indent"><span class="text-accent">"location"</span>: "Fquih Ben Salah",
+                                </div>
+                                <div class="line indent"><span class="text-accent">"email"</span>:
+                                    "oussamazahis3@gmail.com",</div>
+                                <div class="line indent"><span class="text-accent">"status"</span>: <span
+                                        class="text-accent">"Open to opportunities"</span></div>
+                                <div class="line"><span class="text-primary">}</span></div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="cyber-card social-btn" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="cyber-card social-btn" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:oussamazahis3@gmail.com" class="cyber-card social-btn" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label><span class="text-primary">$</span> name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="text-primary">$</span> email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="text-primary">$</span> message</label>
+                            <textarea id="message" placeholder="Enter your message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-glow w-full">
+                            <span class="btn-text">
+                                <span><i class="fas fa-paper-plane"></i> Send Message</span>
+                            </span>
+                            <span class="btn-loader hidden">
+                                <div class="spinner"></div>
+                                Sending...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+
+                <footer class="footer">
+                    <p><span class="text-primary">&copy;</span> <span id="year"></span> Oussama Zahid. <span
+                            class="text-accent"> All rights reserved.</span></p>
+                    <p class="footer-sub">Built with <span class="text-primary">HTML5</span> + <span
+                            class="text-accent">CSS3</span> + <span class="text-primary">Vanilla JS</span></p>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <h4 id="toast-title">Success</h4>
+            <p id="toast-desc">Message sent successfully!</p>
+        </div>
     </div>
-  </nav>
 
-  <main>
-    <!-- HERO SECTION - FIXED TO MATCH IMAGE -->
-    <section id="home" class="hero-section">
-      <div class="container hero-container">
-        <!-- Kept name and added glitch logic back -->
-        <h1 class="hero-title glitch" data-text="OUSSAMA ZAHID">OUSSAMA ZAHID</h1>
-        <p class="hero-subtitle">
-          <span class="code-bracket">&lt;</span>
-          Full-Stack Web & Security Developer
-          <span class="code-bracket">/&gt;</span>
-        </p>
-        <p class="hero-description">
-          Building secure, scalable applications and protecting digital assets.
-        </p>
-        <p class="hero-cta-text">Ready to secure your next project.</p>
-
-        <div class="hero-buttons">
-          <!-- Added icons back to match mockup image -->
-          <a href="#projects" class="btn btn-primary">
-            <i class="fa-solid fa-file-code"></i> VIEW PROJECTS
-          </a>
-          <a href="#contact" class="btn btn-secondary">
-            <i class="fa-solid fa-envelope"></i> CONTACT ME
-          </a>
-        </div>
-      </div>
-
-      <!-- TERMINAL -->
-      <div class="terminal-container">
-        <div class="terminal-header">
-          <div class="terminal-controls">
-            <span class="control close"></span>
-            <span class="control minimize"></span>
-            <span class="control maximize"></span>
-          </div>
-          <div class="terminal-title">terminal@portfolio:~</div>
-        </div>
-        <div class="terminal-body" id="terminal-body">
-          <div class="terminal-line">Welcome to the Terminal v1.0.0</div>
-          <div class="terminal-line">Type "help" for available commands.</div>
-          <div class="terminal-input-line">
-            <span class="prompt">$</span>
-            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
-            <span class="cursor"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section about-section">
-      <div class="section-header">
-        <h2 class="section-title glitch" data-text="<About Me />">&lt;About Me /&gt;</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="container about-container">
-        <div class="about-image-wrapper">
-          <div class="cyber-circle"></div>
-          <div class="profile-frame">
-            <!-- Placeholder for profile image as requested -->
-            <!-- Shield Icon instead of text -->
-            <div class="profile-placeholder">
-              <i class="fa-solid fa-shield-halved"
-                style="font-size: 5rem; color: var(--primary-cyan); filter: drop-shadow(0 0 10px var(--primary-cyan));"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-content terminal-style-box">
-          <div class="cmd-bar">
-            <span class="prompt">$</span> cat about.md
-          </div>
-          <h3>Professional Summary</h3>
-          <p>
-            A passionate Full-Stack Developer with a strong focus on cybersecurity. I specialize in building secure,
-            scalable web applications while implementing robust security measures to protect against modern threats.
-          </p>
-          <p>
-            My approach combines clean, efficient code with security-first thinking. Whether it's developing a complex
-            web application or conducting penetration testing, I bring the same level of dedication and attention to
-            detail.
-          </p>
-
-          <div class="about-tags">
-            <span class="tag">Full-Stack Development</span>
-            <span class="tag">Cybersecurity Expert</span>
-            <span class="tag">Secure Code Practices</span>
-            <span class="tag">DevOps &amp; Infrastructure</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section skills-section">
-      <div class="section-header">
-        <h2 class="section-title glitch" data-text="<Skills & Education />">&lt;Skills &amp; Education /&gt;</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="container">
-        <div class="skills-tabs">
-          <button class="tab-btn active" data-tab="technical">TECHNICAL SKILLS</button>
-          <button class="tab-btn" data-tab="curriculum">CURRICULUM</button>
-        </div>
-
-        <div class="skills-content active" id="technical">
-          <div class="skills-grid">
-            <!-- Skill Items based on screenshots/text -->
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-brands fa-react"></i></span>
-                <span class="skill-name">React / Next.js</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 90%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Frontend</span>
-                <span>90%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-brands fa-js"></i></span>
-                <span class="skill-name">TypeScript</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 85%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Frontend</span>
-                <span>85%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-brands fa-node"></i></span>
-                <span class="skill-name">Node.js</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 85%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Backend</span>
-                <span>85%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-brands fa-python"></i></span>
-                <span class="skill-name">Python</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 80%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Backend</span>
-                <span>80%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-solid fa-database"></i></span>
-                <span class="skill-name">PostgreSQL</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 75%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Database</span>
-                <span>75%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-brands fa-docker"></i></span>
-                <span class="skill-name">Docker</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 70%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>DevOps</span>
-                <span>70%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-solid fa-terminal"></i></span>
-                <span class="skill-name">Linux</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 85%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Systems</span>
-                <span>85%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-solid fa-code-branch"></i></span>
-                <span class="skill-name">Git</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 90%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Tools</span>
-                <span>90%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-solid fa-bug"></i></span>
-                <span class="skill-name">Penetration Testing</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 75%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Security</span>
-                <span>75%</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-solid fa-shield-halved"></i></span>
-                <span class="skill-name">Network Security</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 70%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Security</span>
-                <span>70%</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-solid fa-key"></i></span>
-                <span class="skill-name">Cryptography</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 65%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Security</span>
-                <span>65%</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-header">
-                <span class="skill-icon"><i class="fa-brands fa-aws"></i></span>
-                <span class="skill-name">AWS</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" style="width: 70%;"></div>
-              </div>
-              <div class="skill-meta">
-                <span>Cloud</span>
-                <span>70%</span>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-
-        <div class="skills-content" id="curriculum" style="display: none;">
-          <div class="curriculum-grid">
-            <div class="curriculum-item">
-              <h3>Core Fundamentals</h3>
-              <ul>
-                <li><span class="num">01</span> Network Protocols & Architecture</li>
-                <li><span class="num">02</span> Linux System Administration</li>
-                <li><span class="num">03</span> Programming Fundamentals</li>
-                <li><span class="num">04</span> Database Management</li>
-                <li><span class="num">05</span> Web Technologies</li>
-                <li><span class="num">06</span> Operating Systems</li>
-              </ul>
-            </div>
-            <div class="curriculum-item">
-              <h3>Cybersecurity Specialization</h3>
-              <ul>
-                <li><span class="num">01</span> Ethical Hacking & Pen Testing</li>
-                <li><span class="num">02</span> Malware Analysis</li>
-                <li><span class="num">03</span> Incident Response</li>
-                <li><span class="num">04</span> Security Auditing</li>
-                <li><span class="num">05</span> Cryptographic Systems</li>
-                <li><span class="num">06</span> Threat Intelligence</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="section projects-section">
-      <div class="section-header">
-        <h2 class="section-title glitch" data-text="<Projects />">&lt;Projects /&gt;</h2>
-        <div class="section-line"></div>
-        <p class="section-subtitle">A showcase of my security-focused web development projects</p>
-      </div>
-
-      <div class="container projects-grid">
-
-        <!-- Project 1 -->
-        <article class="project-card">
-          <div class="project-icon">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <h3 class="project-title">SecureAuth Platform</h3>
-          <p class="project-desc">A robust authentication system with multi-factor authentication, JWT tokens, and
-            role-based access control.</p>
-          <div class="project-tech">
-            <span>React</span>
-            <span>Node.js</span>
-            <span>PostgreSQL</span>
-            <span>JWT</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn-sm"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="#" class="btn-sm btn-outline"><i class="fa-solid fa-external-link-alt"></i> Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card">
-          <div class="project-icon">
-            <i class="fa-solid fa-network-wired"></i>
-          </div>
-          <h3 class="project-title">Network Monitor Dashboard</h3>
-          <p class="project-desc">Real-time network traffic monitoring tool with anomaly detection and alerting system.
-          </p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>React</span>
-            <span>WebSocket</span>
-            <span>Docker</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn-sm"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="#" class="btn-sm btn-outline"><i class="fa-solid fa-external-link-alt"></i> Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card">
-          <div class="project-icon">
-            <i class="fa-solid fa-bug"></i>
-          </div>
-          <h3 class="project-title">Vulnerability Scanner</h3>
-          <p class="project-desc">Automated security scanning tool for web applications that identifies common
-            vulnerabilities.</p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Security</span>
-            <span>API</span>
-            <span>CLI</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn-sm"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="#" class="btn-sm btn-outline"><i class="fa-solid fa-external-link-alt"></i> Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card">
-          <div class="project-icon">
-            <i class="fa-regular fa-comments"></i>
-          </div>
-          <h3 class="project-title">Encrypted Chat App</h3>
-          <p class="project-desc">End-to-end encrypted messaging application with perfect forward secrecy.</p>
-          <div class="project-tech">
-            <span>React</span>
-            <span>Node.js</span>
-            <span>WebSocket</span>
-            <span>Crypto</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn-sm"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="#" class="btn-sm btn-outline"><i class="fa-solid fa-external-link-alt"></i> Demo</a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section contact-section">
-      <div class="section-header">
-        <h2 class="section-title glitch" data-text="<Contact />">&lt;Contact /&gt;</h2>
-        <div class="section-line"></div>
-        <p class="section-subtitle">Ready to collaborate? Let's build something secure together.</p>
-      </div>
-
-      <div class="container contact-container">
-        <div class="contact-info-panel">
-          <div class="terminal-style-box">
-            <div class="cmd-bar">
-              <span class="prompt">$</span> cat contact_info.json
-            </div>
-            <pre class="json-code">
-{
-  <span class="key">"location"</span>: <span class="string">"Morocco"</span>,
-  <span class="key">"email"</span>: <span class="string">"oussama.zahid@example.com"</span>,
-  <span class="key">"status"</span>: <span class="string">"Open to opportunities"</span>
-}</pre>
-          </div>
-
-          <div class="social-links">
-            <a href="#" class="social-btn"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" class="social-btn"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-
-        <div class="contact-form-panel">
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label for="name" class="input-label"><span class="prompt">$</span> name</label>
-              <input type="text" id="name" name="name" required placeholder="Enter your name" class="terminal-input">
-            </div>
-            <div class="form-group">
-              <label for="email" class="input-label"><span class="prompt">$</span> email</label>
-              <input type="email" id="email" name="email" required placeholder="Enter your email"
-                class="terminal-input">
-            </div>
-            <div class="form-group">
-              <label for="message" class="input-label"><span class="prompt">$</span> message</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Enter your message"
-                class="terminal-input"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">
-              <i class="fa-solid fa-paper-plane"></i> SEND MESSAGE
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Oussama Zahid. All rights reserved.</p>
-      <p class="built-with">Built with <span class="highlight">React + TypeScript</span> (Simulated)</p>
-    </div>
-  </footer>
-
-  <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
