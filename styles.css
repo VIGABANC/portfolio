@@ -1080,40 +1080,39 @@ canvas#matrix-canvas {
     transition: all 0.3s ease;
 }
 
-/* GitHub Hover */
-.btn-github:hover {
-    border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    transform: translateY(-5px);
+/* Brand-Specific Social Hovers (High Specificity) */
+.social-links .social-btn.btn-github:hover {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    transform: translateY(-5px) !important;
 }
 
-.btn-github:hover i {
-    color: #ffffff;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+.social-links .social-btn.btn-github:hover i {
+    color: #ffffff !important;
 }
 
-/* LinkedIn Hover */
-.btn-linkedin:hover {
-    border-color: #0077b5;
-    box-shadow: 0 0 15px rgba(0, 119, 181, 0.4);
-    transform: translateY(-5px);
+.social-links .social-btn.btn-linkedin:hover {
+    border-color: #00a0dc !important;
+    /* Brighter LinkedIn Blue */
+    box-shadow: 0 0 20px rgba(0, 160, 220, 0.4) !important;
+    background-color: rgba(0, 160, 220, 0.05) !important;
+    transform: translateY(-5px) !important;
 }
 
-.btn-linkedin:hover i {
-    color: #0077b5;
-    filter: drop-shadow(0 0 5px rgba(0, 119, 181, 0.5));
+.social-links .social-btn.btn-linkedin:hover i {
+    color: #00a0dc !important;
 }
 
-/* Email Hover */
-.btn-email:hover {
-    border-color: #ea4335;
-    box-shadow: 0 0 15px rgba(234, 67, 53, 0.4);
-    transform: translateY(-5px);
+.social-links .social-btn.btn-email:hover {
+    border-color: #ea4335 !important;
+    box-shadow: 0 0 20px rgba(234, 67, 53, 0.4) !important;
+    background-color: rgba(234, 67, 53, 0.05) !important;
+    transform: translateY(-5px) !important;
 }
 
-.btn-email:hover i {
-    color: #ea4335;
-    filter: drop-shadow(0 0 5px rgba(234, 67, 53, 0.5));
+.social-links .social-btn.btn-email:hover i {
+    color: #ea4335 !important;
 }
 
 .contact-form {
