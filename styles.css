@@ -1020,16 +1020,14 @@ canvas#matrix-canvas {
     position: relative;
     z-index: 10;
     margin-top: 12rem;
-    /* Preserves the layout gap */
     background-color: var(--card);
-    /* Keep text section background by default */
     transition: all 0.4s ease;
 }
 
 .project-card:hover .project-content {
-    background-color: rgba(1, 4, 9, 0.6);
-    /* Semi-transparent overlay on hover for readability */
-    backdrop-filter: blur(4px);
+    background-color: rgba(1, 4, 9, 0.75);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid hsla(185, 100%, 50%, 0.1);
 }
 
 .project-content h3 {
