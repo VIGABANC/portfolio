@@ -282,14 +282,14 @@ Available commands:
 `.trim(),
 
         whoami: () => `
-┌─────────────────────────────────────────┐
-│  DEVELOPER PROFILE                      │
-├─────────────────────────────────────────┤
-│  Name: Oussama Zahid                    │
-│  Role: Full-Stack Dev | Analyste Cyber  │
-│  Location: Fquih Ben Salah              │
-│  Status: Available for opportunities    │
-└─────────────────────────────────────────┘
++-------------------------------------------+
+|             DEVELOPER PROFILE             |
++-------------------------------------------+
+| Name:     Oussama Zahid                   |
+| Role:     Full-Stack Dev | Analyste Cyber |
+| Location: Fquih Ben Salah                 |
+| Status:   Available for opportunities     |
++-------------------------------------------+
 `.trim(),
 
         skills: () => {
@@ -525,11 +525,13 @@ Available commands:
         }
 
         function drawMatrix() {
-            ctx.fillStyle = 'rgba(1, 4, 9, 0.1)';
+            ctx.fillStyle = 'rgba(1, 4, 9, 0.15)'; // Slightly darker trail
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = '#0ea5e9'; // Cyan
             ctx.font = fontSize + 'px monospace';
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = '#0ea5e9';
 
             for (let i = 0; i < drops.length; i++) {
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));

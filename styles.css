@@ -67,10 +67,11 @@ canvas#matrix-canvas {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.3;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    /* Move behind everything */
+    opacity: 0.4;
     pointer-events: none;
 }
 
@@ -94,7 +95,7 @@ canvas#matrix-canvas {
 }
 
 .text-center {
-    text-center: center !important;
+    text-align: center !important;
 }
 
 .text-center {
@@ -289,8 +290,7 @@ canvas#matrix-canvas {
     padding: 4rem 1rem 2rem;
     text-align: center;
     position: relative;
-    background: radial-gradient(circle at center, hsla(185, 100%, 50%, 0.05) 0%, transparent 70%),
-        linear-gradient(180deg, var(--background) 0%, #010409 100%);
+    background: radial-gradient(circle at center, hsla(185, 100%, 50%, 0.1) 0%, transparent 80%);
     overflow: hidden;
 }
 
