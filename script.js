@@ -273,12 +273,13 @@ Available commands:
   contact        - Get contact information
   sudo hire-me   - Try to hire the developer ;)
   cat resume.txt - View resume summary
+  cat contact_info.json - View contact details
   clear          - Clear terminal
   date           - Show current date/time
   ls             - List available sections
   pwd            - Print current directory
-  games          - Launch mini-arcade (Snake)
   cv             - Download Oussama's CV (PDF)
+  games          - Launch mini-arcade (Snake)
 `.trim(),
 
         whoami: () => `
@@ -369,6 +370,18 @@ Available commands:
 ╚═══════════════════════════════════════════╝
 `.trim(),
 
+        'cat contact_info.json': () => `
+{
+  "name": "Oussama Zahid",
+  "role": "Analyste Cybersécurité & Full-Stack Dev",
+  "email": "oussamazahis3@gmail.com",
+  "github": "https://github.com/oussamazahid",
+  "linkedin": "https://linkedin.com/in/oussamazahid",
+  "location": "Fquih Ben Salah, Morocco",
+  "status": "Open to opportunities"
+}
+`.trim(),
+
         clear: () => {
             const lines = terminalBody.querySelectorAll('.output-line, .input-line-copy');
             lines.forEach(line => line.remove());
@@ -376,7 +389,7 @@ Available commands:
         },
 
         date: () => new Date().toString(),
-        ls: () => 'home  about  skills  projects  contact',
+        ls: () => 'resume.txt  contact_info.json  home  about  skills  projects  contact',
         pwd: () => '/home/developer/portfolio',
         games: () => {
             initSnakeGame();
