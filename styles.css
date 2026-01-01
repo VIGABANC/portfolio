@@ -289,6 +289,21 @@ canvas#matrix-canvas {
     padding: 4rem 1rem 2rem;
     text-align: center;
     position: relative;
+    background: radial-gradient(circle at center, hsla(185, 100%, 50%, 0.05) 0%, transparent 70%),
+        linear-gradient(180deg, var(--background) 0%, #010409 100%);
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
 }
 
 .hero-content {
@@ -695,9 +710,20 @@ canvas#matrix-canvas {
     padding: 1rem;
     border-radius: 0.5rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 0.75rem;
     transition: all 0.3s ease;
+    height: 100%;
+}
+
+.cyber-card.horizontal {
+    flex-direction: row;
+    align-items: center;
+}
+
+.cyber-card i {
+    font-size: 1.5rem;
 }
 
 .cyber-card span {
