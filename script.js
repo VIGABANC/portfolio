@@ -286,7 +286,7 @@ Available commands:
 │  DEVELOPER PROFILE                      │
 ├─────────────────────────────────────────┤
 │  Name: Oussama Zahid                    │
-│  Role: Full-Stack Web & Security Dev    │
+│  Role: Full-Stack Dev | Analyste Cyber  │
 │  Location: Fquih Ben Salah              │
 │  Status: Available for opportunities    │
 └─────────────────────────────────────────┘
