@@ -1,4 +1,149 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // --- Global Data State ---
+    let portfolioData = {};
+
+    // --- Fetch Data ---
+    try {
+        const response = await fetch('assets/data/data.json');
+        portfolioData = await response.json();
+        renderContent(portfolioData);
+    } catch (error) {
+        console.error('Failed to load portfolio data:', error);
+        // Fallback or error handling
+    }
+
+    // --- Rendering Logic ---
+    function renderContent(data) {
+        // Hero
+        if (data.profile) {
+            document.getElementById('role-text').innerHTML =
+                `${data.profile.role_line1} ${data.profile.role_main} ${data.profile.role_line1_end}`;
+            document.getElementById('hero-desc').innerHTML =
+                `${data.profile.description_prefix} <span class="text-accent">${data.profile.description_highlight}</span> ${data.profile.description_suffix}<br>` +
+                `<span class="text-primary animate-text-glow">${data.profile.description_highlight2}</span>`;
+
+            const profileImg = document.getElementById('profile-img');
+            if (profileImg) profileImg.src = data.profile.avatar;
+        }
+
+        // About Text
+        if (data.profile && data.profile.about) {
+            const aboutContainer = document.getElementById('about-text-container');
+            const about = data.profile.about;
+            aboutContainer.innerHTML = `
+                <h3>Professional Summary</h3>
+                <p>${about.summary_intro} <span class="text-primary">${about.summary_highlight1}</span> ${about.summary_text1} <span class="text-accent">${about.summary_highlight2}</span> ${about.summary_text2}</p>
+                <p>${about.methodology}</p>
+            `;
+        }
+
+        // About Highlights
+        if (data.about_highlights) {
+            const highlightGrid = document.getElementById('about-highlights');
+            highlightGrid.innerHTML = data.about_highlights.map(item => `
+                <div class="cyber-card">
+                    <div class="highlight-image">
+                        <img src="${item.image}" alt="${item.title}" class="project-img">
+                    </div>
+                    <span class="highlight-caption">${item.title}</span>
+                </div>
+            `).join('');
+        }
+
+        // Skills
+        if (data.skills) {
+            const skillsGrid = document.getElementById('skills-grid-container');
+            skillsGrid.innerHTML = data.skills.map(skill => `
+                <div class="cyber-card skill-item" style="--level: ${skill.level}%;">
+                    <div class="skill-info">
+                        <i class="${skill.icon} icon-text text-primary"></i>
+                        <span>${skill.name}</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="bar-fill"></div>
+                    </div>
+                    <div class="skill-footer">
+                        <span class="category">${skill.category}</span>
+                        <span class="percent">${skill.level}%</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Curriculum
+        if (data.curriculum) {
+            const curriculumGrid = document.getElementById('curriculum-grid-container');
+            curriculumGrid.innerHTML = data.curriculum.map(section => `
+                <div class="terminal-box">
+                    <div class="box-header">
+                        <div class="dot neon-bg-${section.color || 'primary'}"></div>
+                        <h3 class="text-${section.color || 'primary'}">${section.title}</h3>
+                    </div>
+                    <div class="curriculum-list">
+                        ${section.items.map(item => `
+                            <div class="curr-item"><span class="num">${item.id}</span> <i class="${item.icon}"></i>
+                                <span>${item.text}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Projects
+        if (data.projects) {
+            const projectsGrid = document.getElementById('projects-grid-container');
+            projectsGrid.innerHTML = data.projects.map(project => `
+                <div class="cyber-card project-card">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}" class="project-img">
+                        <div class="glitch-overlay"></div>
+                        <div class="scanlines"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>${project.title} <span class="title-line"></span></h3>
+                        <p>${project.description}</p>
+                        <div class="tags">
+                            ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+                        </div>
+                        <div class="project-btns">
+                            <a href="${project.links.code}" class="btn btn-outline btn-sm">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="${project.links.demo}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Contact JSON
+        if (data.contact_info) {
+            const contactContainer = document.getElementById('contact-json-container');
+            const info = data.contact_info;
+            contactContainer.innerHTML = `
+                <div class="line"><span class="text-primary">{</span></div>
+                <div class="line indent"><span class="text-accent">"location"</span>: "${info.location}",</div>
+                <div class="line indent"><span class="text-accent">"email"</span>: "${info.email}",</div>
+                <div class="line indent"><span class="text-accent">"status"</span>: <span class="text-accent">"${info.status}"</span></div>
+                <div class="line"><span class="text-primary">}</span></div>
+            `;
+        }
+
+        // Social Links
+        if (data.profile && data.profile.socials) {
+            const socialContainer = document.getElementById('social-links-container');
+            socialContainer.innerHTML = data.profile.socials.map(social => `
+                <a href="${social.url}" target="_blank"
+                    class="cyber-card social-btn ${social.class}" aria-label="${social.name}">
+                    <i class="${social.icon}"></i>
+                </a>
+            `).join('');
+        }
+    }
+
     // --- Matrix Background ---
     const initMatrix = () => {
         const canvas = document.getElementById('matrix-canvas');
@@ -96,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let snakeCanvas, snakeCtx;
     let snake, food, direction, score, gameOver;
     const gridSize = 20;
-    const tileCount = 20; // 400x400 canvas, 20x20 grid
+    const tileCount = 20;
 
     const initSnakeGame = () => {
         snakeCanvas = document.createElement('canvas');
@@ -112,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resetGame();
         if (snakeGameInterval) clearInterval(snakeGameInterval);
-        snakeGameInterval = setInterval(gameLoop, 100); // Game speed
+        snakeGameInterval = setInterval(gameLoop, 100);
 
         document.addEventListener('keydown', handleSnakeInput);
     };
@@ -120,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetGame = () => {
         snake = [{ x: 10, y: 10 }];
         food = generateFood();
-        direction = { x: 0, y: 0 }; // Initial state: not moving
+        direction = { x: 0, y: 0 };
         score = 0;
         gameOver = false;
         addLine('Snake game started! Score: 0', 'output');
@@ -159,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newDirection = { x: direction.x, y: direction.y };
         switch (e.key) {
             case 'ArrowUp':
-                if (direction.y === 1) return; // Prevent 180 degree turn
+                if (direction.y === 1) return;
                 newDirection.x = 0; newDirection.y = -1;
                 break;
             case 'ArrowDown':
@@ -177,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 return;
         }
-        // Only update direction if it's a valid change and not a 180-degree turn
+
         if (newDirection.x !== -direction.x || newDirection.y !== -direction.y) {
             direction = newDirection;
         }
@@ -193,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const update = () => {
-        if (direction.x === 0 && direction.y === 0) return; // Don't move if no direction set
+        if (direction.x === 0 && direction.y === 0) return;
 
         const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
@@ -211,14 +356,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        snake.unshift(head); // Add new head
+        snake.unshift(head);
 
         if (head.x === food.x && head.y === food.y) {
             score++;
             food = generateFood();
             addLine(`Score: ${score}`, 'output');
         } else {
-            snake.pop(); // Remove tail if no food eaten
+            snake.pop();
         }
     };
 
@@ -227,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Draw snake
         for (let i = 0; i < snake.length; i++) {
-            snakeCtx.fillStyle = i === 0 ? '#0f0' : '#0a0'; // Head is brighter green
+            snakeCtx.fillStyle = i === 0 ? '#0f0' : '#0a0';
             snakeCtx.fillRect(snake[i].x * gridSize, snake[i].y * gridSize, gridSize - 1, gridSize - 1);
         }
 
@@ -249,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameOver = true;
         clearInterval(snakeGameInterval);
         addLine(`Game Over! Final Score: ${score}. Press 'R' to restart or 'Q' to quit.`, 'error');
-        drawSnakeGame(); // Redraw to show game over message
+        drawSnakeGame();
     };
 
     const quitSnakeGame = () => {
@@ -259,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
             snakeCanvas.parentNode.removeChild(snakeCanvas);
         }
         addLine('Snake game terminated. Thanks for playing!', 'output');
-        gameOver = true; // Ensure game state is reset
+        gameOver = true;
     };
 
     const commands = {
@@ -278,33 +423,38 @@ Available commands:
   date           - Show current date/time
   ls             - List available sections
   pwd            - Print current directory
-  cv             - Download Oussama's CV (PDF)
+  cv             - Download CV (PDF)
   games          - Launch mini-arcade (Snake)
 `.trim(),
 
-        whoami: () => `
+        whoami: () => {
+            const p = portfolioData.profile || {};
+            return `
 +-------------------------------------------+
 |             DEVELOPER PROFILE             |
 +-------------------------------------------+
-| Name:      Oussama Zahid                  |
-| Role:      Full-Stack Dev | Analyste Cyber|
-| Location:  Fquih Ben Salah                |
-| Status:    Open to opportunities          |
+| Name:      ${p.name || 'Unknown'}                  |
+| Role:      ${p.role_main || 'Developer'} |
+| Location:  ${portfolioData.contact_info.location || 'Unknown'}                |
+| Status:    ${portfolioData.contact_info.status || 'N/A'}          |
 +-------------------------------------------+
-`.trim(),
+`.trim();
+        },
 
         skills: () => {
             setTimeout(() => {
                 document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
             }, 500);
-            return `[TECHNICAL SKILLS LOADED]\n\nFrontend:  React, TypeScript, Tailwind CSS, Next.js\nBackend:   Node.js, Python, Express, PostgreSQL\nSecurity:  Penetration Testing, Network Security\nDevOps:    Docker, Linux, CI/CD, AWS\nTools:     Git, Burp Suite, Wireshark, Nmap\n\n→ Scrolling to Skills section...`;
+            const skillsList = portfolioData.skills ? portfolioData.skills.map(s => s.name).join(', ') : 'Loading...';
+            return `[TECHNICAL SKILLS LOADED]\n\n${skillsList}\n\n→ Scrolling to Skills section...`;
         },
 
         projects: () => {
             setTimeout(() => {
                 document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
             }, 500);
-            return `[PROJECTS DATABASE ACCESSED]\n\n1. SecureAuth Platform\n2. Network Monitor Dashboard\n3. Vulnerability Scanner\n4. Encrypted Chat App\n\n→ Scrolling to Projects section...`;
+            const projs = portfolioData.projects ? portfolioData.projects.map((p, i) => `${i + 1}. ${p.title}`).join('\n') : 'Loading...';
+            return `[PROJECTS DATABASE ACCESSED]\n\n${projs}\n\n→ Scrolling to Projects section...`;
         },
 
         education: () => `
@@ -328,7 +478,8 @@ Available commands:
             setTimeout(() => {
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             }, 500);
-            return `[CONTACT INFORMATION]\n\n📧 Email:    oussamazahis3@gmail.com\n💼 LinkedIn: linkedin.com/in/oussamazahid\n🐙 GitHub:   github.com/oussamazahid\n\n→ Scrolling to Contact section...`;
+            const c = portfolioData.contact_info || {};
+            return `[CONTACT INFORMATION]\n\n📧 Email:    ${c.email}\n💼 LinkedIn: ${c.linkedin}\n🐙 GitHub:   ${c.github}\n\n→ Scrolling to Contact section...`;
         },
 
         'sudo hire-me': () => [
@@ -370,17 +521,7 @@ Available commands:
 ╚═══════════════════════════════════════════╝
 `.trim(),
 
-        'cat contact_info.json': () => `
-{
-  "name": "Oussama Zahid",
-  "role": "Analyste Cybersécurité & Full-Stack Dev",
-  "email": "oussamazahis3@gmail.com",
-  "github": "https://github.com/oussamazahid",
-  "linkedin": "https://linkedin.com/in/oussamazahid",
-  "location": "Fquih Ben Salah, Morocco",
-  "status": "Open to opportunities"
-}
-`.trim(),
+        'cat contact_info.json': () => JSON.stringify(portfolioData.contact_info || {}, null, 2),
 
         clear: () => {
             // 1. Stop the game
@@ -392,13 +533,10 @@ Available commands:
             document.removeEventListener('keydown', handleSnakeInput);
 
             // 2. NUCLEAR OPTION: Clear innerHTML and recreate form
-            // This is necessary because some browsers/contexts might hold onto the canvas element
-            // if we just try to remove it selectively.
             terminalBody.innerHTML = '';
 
             // 3. Re-append the form
             terminalBody.appendChild(terminalForm);
-            // Ensure nothing else is there
 
             // 4. Reset game internal state
             snake = null;
@@ -412,18 +550,20 @@ Available commands:
         ls: () => 'resume.txt  contact_info.json  home  about  skills  projects  contact',
         pwd: () => '/home/developer/portfolio',
         games: () => {
-            quitSnakeGame(); // Ensure any previous game is cleaned up
+            quitSnakeGame();
             initSnakeGame();
             return '[LAUNCHING ARCADE PROTOCOL]... Initializing Snake engine. Use ARROW KEYS to move. Press Q to quit.';
         },
         cv: () => {
+            // Note: In real scenarios, path should be updated
+            // For now, assuming cv is in root or we can point to assets/docs/ if moved
             const link = document.createElement('a');
             link.href = 'cv final.pdf';
             link.download = 'Oussama_Zahid_CV.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            return ''; // Keeping it silent as requested
+            return '';
         }
     };
 
@@ -543,64 +683,5 @@ Available commands:
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // --- Matrix Rain Effect ---
-    const canvas = document.getElementById('matrix-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-
-        // Handle high DPI
-        const dpr = window.devicePixelRatio || 1;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth * dpr;
-            canvas.height = window.innerHeight * dpr;
-            ctx.scale(dpr, dpr);
-        }
-        resizeCanvas();
-
-        const characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*';
-        const fontSize = 14;
-        let columns = window.innerWidth / fontSize;
-        let drops = [];
-
-        function initDrops() {
-            columns = Math.ceil(window.innerWidth / fontSize);
-            drops = [];
-            for (let x = 0; x < columns; x++) {
-                drops[x] = Math.random() * -100; // Randomize start to prevent "curtain" effect
-            }
-        }
-        initDrops();
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(1, 4, 9, 0.1)';
-            ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = characters.charAt(Math.floor(Math.random() * characters.length));
-
-                const colorSeed = Math.random();
-                const opacity = Math.random() * 0.6 + 0.4;
-
-                if (colorSeed > 0.98) ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-                else if (colorSeed > 0.8) ctx.fillStyle = `rgba(14, 165, 233, ${opacity})`;
-                else ctx.fillStyle = `rgba(16, 185, 129, ${opacity})`;
-
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.98) {
-                    drops[i] = 0;
-                }
-                drops[i] += 1;
-            }
-        }
-
-        let matrixInterval = setInterval(drawMatrix, 35);
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initDrops();
-        });
-    }
+    // (Already handled by initMatrix call above)
 });
