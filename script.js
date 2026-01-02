@@ -383,15 +383,36 @@ Available commands:
 `.trim(),
 
         clear: () => {
-            const lines = terminalBody.querySelectorAll('.output-line, .input-line-copy');
-            lines.forEach(line => line.remove());
+            // 1. Stop the game
+            if (snakeGameInterval) {
+                clearInterval(snakeGameInterval);
+                snakeGameInterval = null;
+            }
+            gameOver = true;
+            document.removeEventListener('keydown', handleSnakeInput);
+
+            // 2. NUCLEAR OPTION: Clear innerHTML and recreate form
+            // This is necessary because some browsers/contexts might hold onto the canvas element
+            // if we just try to remove it selectively.
+            terminalBody.innerHTML = '';
+
+            // 3. Re-append the form
+            terminalBody.appendChild(terminalForm);
+            // Ensure nothing else is there
+
+            // 4. Reset game internal state
+            snake = null;
+            food = null;
+
             return '';
         },
+        cclear: () => commands.clear(),
 
         date: () => new Date().toString(),
         ls: () => 'resume.txt  contact_info.json  home  about  skills  projects  contact',
         pwd: () => '/home/developer/portfolio',
         games: () => {
+            quitSnakeGame(); // Ensure any previous game is cleaned up
             initSnakeGame();
             return '[LAUNCHING ARCADE PROTOCOL]... Initializing Snake engine. Use ARROW KEYS to move. Press Q to quit.';
         },
