@@ -1,254 +1,83 @@
 {
+    "site": {
+        "title": "Concept Portfolio | Imagine Mode",
+        "description": "Future Tech & Security Architecture",
+        "footer_text": "Imagine Mode Enabled",
+        "copyright_year": "2030"
+    },
     "profile": {
-        "name": "Oussama Zahid",
+        "name": "CYBER_NOMAD",
         "role_line1": "<",
-        "role_main": "Full-Stack Web | Analyste Cybersécurité",
+        "role_main": "Lead Security Architect",
         "role_line1_end": "/>",
-        "description_prefix": "Expert in",
-        "description_highlight": "Analyste Cybersécurité",
-        "description_suffix": "and Full-Stack Development.",
-        "description_highlight2": "Building secure, scalable applications and protecting digital assets.",
+        "description_prefix": "Designing the future of",
+        "description_highlight": "De-centralized Identity",
+        "description_suffix": "and zero-trust networks.",
+        "description_highlight2": "Working on the edge of what's possible.",
         "avatar": "assets/images/PROFILE.png",
         "socials": [
             {
                 "name": "GitHub",
-                "url": "https://github.com/oussamazahid",
+                "url": "https://github.com/VIGABANC",
                 "icon": "fab fa-github",
                 "class": "btn-github"
-            },
-            {
-                "name": "LinkedIn",
-                "url": "https://linkedin.com/in/oussamazahid",
-                "icon": "fab fa-linkedin",
-                "class": "btn-linkedin"
-            },
-            {
-                "name": "Email",
-                "url": "mailto:oussamazahis3@gmail.com",
-                "icon": "fas fa-envelope",
-                "class": "btn-email"
             }
         ],
         "about": {
-            "summary_intro": "A passionate",
-            "summary_highlight1": "Full-Stack Developer",
-            "summary_text1": "and",
-            "summary_highlight2": "Analyste Cybersécurité",
-            "summary_text2": "with a strong focus on security-first engineering. I specialize in building robust, scalable web applications while implementing sophisticated security measures to protect against modern threats.",
-            "methodology": "My methodology combines clean code with a high-level security mindset. From developing complex architectures to conducting thorough vulnerability assessments, I deliver excellence in both development and security."
+            "summary_intro": "I am a",
+            "summary_highlight1": "Visionary Developer",
+            "summary_text1": "exploring the",
+            "summary_highlight2": "Quantum Security",
+            "summary_text2": "landscape. This file is for architectural testing and concept visualization.",
+            "methodology": "Zero-trust by default, privacy by design, and scalability through intelligence."
         }
     },
     "skills": [
         {
-            "name": "React / Next.js",
-            "icon": "fab fa-react",
-            "level": 90,
-            "category": "Frontend"
+            "name": "Quantum Computing",
+            "icon": "fas fa-atom",
+            "level": 40,
+            "category": "Future"
         },
         {
-            "name": "TypeScript",
-            "icon": "fas fa-code-branch",
-            "level": 85,
-            "category": "Frontend"
-        },
-        {
-            "name": "Node.js",
-            "icon": "fab fa-node-js",
-            "level": 85,
-            "category": "Backend"
-        },
-        {
-            "name": "Python",
-            "icon": "fab fa-python",
-            "level": 80,
-            "category": "Backend"
-        },
-        {
-            "name": "MySQL",
-            "icon": "fas fa-database",
-            "level": 75,
-            "category": "Database"
-        },
-        {
-            "name": "Docker",
-            "icon": "fab fa-docker",
-            "level": 70,
-            "category": "DevOps"
-        },
-        {
-            "name": "Linux",
-            "icon": "fab fa-linux",
-            "level": 85,
-            "category": "Systems"
-        },
-        {
-            "name": "Git",
-            "icon": "fab fa-git-alt",
-            "level": 90,
-            "category": "Tools"
+            "name": "AI Orchestration",
+            "icon": "fas fa-brain",
+            "level": 95,
+            "category": "Intelligence"
         }
     ],
-    "curriculum": [
+    "education": [
         {
-            "title": "Core Fundamentals",
-            "color": "accent",
-            "items": [
-                {
-                    "id": "01",
-                    "icon": "fas fa-network-wired",
-                    "text": "Network Protocols & Architecture"
-                },
-                {
-                    "id": "02",
-                    "icon": "fas fa-laptop-code",
-                    "text": "Linux System Administration"
-                },
-                {
-                    "id": "03",
-                    "icon": "fas fa-code",
-                    "text": "Programming Fundamentals"
-                },
-                {
-                    "id": "04",
-                    "icon": "fas fa-database",
-                    "text": "Database Management"
-                },
-                {
-                    "id": "05",
-                    "icon": "fas fa-globe",
-                    "text": "Web Technologies"
-                },
-                {
-                    "id": "06",
-                    "icon": "fas fa-microchip",
-                    "text": "Operating Systems"
-                }
-            ]
-        },
-        {
-            "title": "Cybersecurity Specialization",
-            "color": "primary",
-            "items": [
-                {
-                    "id": "01",
-                    "icon": "fas fa-user-secret",
-                    "text": "Ethical Hacking & Pen Testing"
-                },
-                {
-                    "id": "02",
-                    "icon": "fas fa-bug",
-                    "text": "Malware Analysis"
-                },
-                {
-                    "id": "03",
-                    "icon": "fas fa-triangle-exclamation",
-                    "text": "Incident Response"
-                },
-                {
-                    "id": "04",
-                    "icon": "fas fa-file-contract",
-                    "text": "Security Auditing"
-                },
-                {
-                    "id": "05",
-                    "icon": "fas fa-key",
-                    "text": "Cryptographic Systems"
-                },
-                {
-                    "id": "06",
-                    "icon": "fas fa-satellite-dish",
-                    "text": "Threat Intelligence"
-                }
-            ]
+            "period": "2028 - 2030",
+            "degree": "Masters in Applied Ethic AI",
+            "institution": "Global Tech Institute",
+            "description": "Thesis on automated defensive systems in neural networks."
         }
     ],
     "projects": [
         {
-            "title": "SecureAuth Platform",
-            "description": "A robust authentication system with multi-factor authentication, JWT tokens, and role-based access control.",
+            "title": "Project AEGIS",
+            "description": "A planetary-scale firewall concept.",
             "tags": [
-                "React",
-                "Node.js",
-                "PostgreSQL",
-                "JWT"
-            ],
-            "image": "assets/images/SecureAuth.png",
-            "links": {
-                "code": "#",
-                "demo": "#"
-            }
-        },
-        {
-            "title": "Network Monitor",
-            "description": "Real-time network traffic monitoring tool with anomaly detection and alerting system.",
-            "tags": [
-                "Python",
-                "React",
-                "WebSocket",
-                "Docker"
+                "Rust",
+                "Wasm",
+                "IPFS"
             ],
             "image": "assets/images/Network Monitor.png",
             "links": {
                 "code": "#",
                 "demo": "#"
             }
-        },
-        {
-            "title": "Vulnerability Scanner",
-            "description": "Automated security scanning tool for web applications that identifies common vulnerabilities.",
-            "tags": [
-                "Python",
-                "Security",
-                "API",
-                "CLI"
-            ],
-            "image": "assets/images/Vulnerability Scanner.png",
-            "links": {
-                "code": "#",
-                "demo": "#"
-            }
-        },
-        {
-            "title": "Encrypted Chat App",
-            "description": "End-to-end encrypted messaging application with perfect forward secrecy.",
-            "tags": [
-                "React",
-                "Node.js",
-                "WebSocket",
-                "Crypto"
-            ],
-            "image": "assets/images/ncrypted Chat App.png",
-            "links": {
-                "code": "#",
-                "demo": "#"
-            }
         }
     ],
-    "about_highlights": [
-        {
-            "title": "Full-Stack Development",
-            "image": "assets/images/highlight_fullstack.png"
-        },
-        {
-            "title": "Cybersecurity Expert",
-            "image": "assets/images/Vulnerability Scanner.png"
-        },
-        {
-            "title": "Secure Code Practices",
-            "image": "assets/images/Secure Code Practices.png"
-        },
-        {
-            "title": "DevOps & Infrastructure",
-            "image": "assets/images/Network Monitor.png"
-        }
-    ],
+    "about_highlights": [],
     "contact_info": {
-        "name": "Oussama Zahid",
-        "role": "Analyste Cybersécurité & Full-Stack Dev",
-        "email": "oussamazahis3@gmail.com",
-        "github": "https://github.com/oussamazahid",
+        "name": "Oussama Zahid (Concept)",
+        "role": "Architect",
+        "email": "concept@example.com",
+        "github": "https://github.com/VIGABANC",
         "linkedin": "https://linkedin.com/in/oussamazahid",
-        "location": "Fquih Ben Salah, Morocco",
-        "status": "Open to opportunities"
+        "location": "Metaverse / Morocco",
+        "status": "Thinking..."
     }
 }

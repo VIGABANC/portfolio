@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- Fetch Data ---
     try {
-        const response = await fetch('assets/data/data.json');
+        const response = await fetch('assets/data/profile.json');
         portfolioData = await response.json();
         renderContent(portfolioData);
     } catch (error) {
@@ -14,13 +14,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- Rendering Logic ---
     function renderContent(data) {
+        // Site Metadata
+        if (data.site) {
+            document.title = data.site.title;
+            const footerYear = document.getElementById('year');
+            if (footerYear) footerYear.textContent = data.site.copyright_year || new Date().getFullYear();
+            const footerSub = document.querySelector('.footer-sub');
+            if (footerSub) footerSub.innerHTML = data.site.footer_text || 'Built with HTML5 + CSS3 + JavaScript';
+        }
+
         // Hero
         if (data.profile) {
-            document.getElementById('role-text').innerHTML =
-                `${data.profile.role_line1} ${data.profile.role_main} ${data.profile.role_line1_end}`;
-            document.getElementById('hero-desc').innerHTML =
-                `${data.profile.description_prefix} <span class="text-accent">${data.profile.description_highlight}</span> ${data.profile.description_suffix}<br>` +
-                `<span class="text-primary animate-text-glow">${data.profile.description_highlight2}</span>`;
+            const nameEl = document.querySelector('.glitch');
+            if (nameEl) {
+                nameEl.textContent = data.profile.name;
+                nameEl.setAttribute('data-text', data.profile.name);
+            }
+
+            const roleEl = document.getElementById('role-text');
+            if (roleEl) {
+                roleEl.innerHTML = `${data.profile.role_line1} ${data.profile.role_main} ${data.profile.role_line1_end}`;
+            }
+
+            const descEl = document.getElementById('hero-desc');
+            if (descEl) {
+                descEl.innerHTML = `
+                    ${data.profile.description_prefix} 
+                    <span class="text-accent">${data.profile.description_highlight}</span> 
+                    ${data.profile.description_suffix}<br>
+                    <span class="text-primary animate-text-glow">${data.profile.description_highlight2}</span>
+                `;
+            }
 
             const profileImg = document.getElementById('profile-img');
             if (profileImg) profileImg.src = data.profile.avatar;
@@ -45,7 +69,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="highlight-image">
                         <img src="${item.image}" alt="${item.title}" class="project-img">
                     </div>
-                    <span class="highlight-caption">${item.title}</span>
+                    <div class="highlight-info">
+                        <span class="highlight-caption">${item.title}</span>
+                        ${item.description ? `<p class="highlight-desc">${item.description}</p>` : ''}
+                    </div>
                 </div>
             `).join('');
         }
@@ -70,21 +97,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             `).join('');
         }
 
-        // Curriculum
-        if (data.curriculum) {
-            const curriculumGrid = document.getElementById('curriculum-grid-container');
-            curriculumGrid.innerHTML = data.curriculum.map(section => `
-                <div class="terminal-box">
-                    <div class="box-header">
-                        <div class="dot neon-bg-${section.color || 'primary'}"></div>
-                        <h3 class="text-${section.color || 'primary'}">${section.title}</h3>
+        // Education
+        if (data.education) {
+            const educationGrid = document.getElementById('education-grid-container');
+            educationGrid.className = 'education-timeline';
+            educationGrid.innerHTML = data.education.map(edu => `
+                <div class="timeline-item">
+                    <div class="timeline-label">${edu.period}</div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot ${edu.current ? 'active' : ''}"></div>
                     </div>
-                    <div class="curriculum-list">
-                        ${section.items.map(item => `
-                            <div class="curr-item"><span class="num">${item.id}</span> <i class="${item.icon}"></i>
-                                <span>${item.text}</span>
-                            </div>
-                        `).join('')}
+                    <div class="timeline-content terminal-box">
+                        <h3 class="text-primary">${edu.degree}</h3>
+                        <div class="institution text-accent">
+                            ${edu.institution}
+                        </div>
+                        <p>${edu.description}</p>
                     </div>
                 </div>
             `).join('');
@@ -107,10 +135,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                             ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
                         </div>
                         <div class="project-btns">
-                            <a href="${project.links.code}" class="btn btn-outline btn-sm">
+                            <a href="${project.links.code}" target="_blank" class="btn btn-outline btn-sm">
                                 <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="${project.links.demo}" class="btn btn-primary btn-sm">
+                            <a href="${project.links.demo}" target="_blank" class="btn btn-primary btn-sm">
                                 <i class="fas fa-external-link-alt"></i> Demo
                             </a>
                         </div>
@@ -429,21 +457,25 @@ Available commands:
 
         whoami: () => {
             const p = portfolioData.profile || {};
+            const c = portfolioData.contact_info || {};
             return `
 +-------------------------------------------+
 |             DEVELOPER PROFILE             |
 +-------------------------------------------+
-| Name:      ${p.name || 'Unknown'}                  |
+| Name:      ${p.name || 'Unknown'}        |
 | Role:      ${p.role_main || 'Developer'} |
-| Location:  ${portfolioData.contact_info.location || 'Unknown'}                |
-| Status:    ${portfolioData.contact_info.status || 'N/A'}          |
+| Location:  ${c.location || 'Unknown'} |
+| Status:    ${c.status || 'N/A'} |
 +-------------------------------------------+
 `.trim();
         },
 
         skills: () => {
             setTimeout(() => {
-                document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+                const skillsSection = document.getElementById('skills');
+                if (skillsSection) skillsSection.scrollIntoView({ behavior: 'smooth' });
+                const skillsTab = document.getElementById('skills-tab-btn');
+                if (skillsTab) skillsTab.click();
             }, 500);
             const skillsList = portfolioData.skills ? portfolioData.skills.map(s => s.name).join(', ') : 'Loading...';
             return `[TECHNICAL SKILLS LOADED]\n\n${skillsList}\n\n→ Scrolling to Skills section...`;
@@ -451,32 +483,38 @@ Available commands:
 
         projects: () => {
             setTimeout(() => {
-                document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                const projSection = document.getElementById('projects');
+                if (projSection) projSection.scrollIntoView({ behavior: 'smooth' });
             }, 500);
             const projs = portfolioData.projects ? portfolioData.projects.map((p, i) => `${i + 1}. ${p.title}`).join('\n') : 'Loading...';
             return `[PROJECTS DATABASE ACCESSED]\n\n${projs}\n\n→ Scrolling to Projects section...`;
         },
 
-        education: () => `
-[EDUCATION & CERTIFICATIONS]
+        education: () => {
+            setTimeout(() => {
+                const eduSection = document.getElementById('education');
+                if (eduSection) eduSection.scrollIntoView({ behavior: 'smooth' });
+                // Auto-switch to education tab
+                const eduBtn = document.getElementById('education-tab-btn');
+                if (eduBtn) eduBtn.click();
+            }, 500);
 
-🎓 Cybersecurity Program
-   ├── Core Fundamentals Track
-   │   ├── Network Protocols & Security
-   │   ├── Linux System Administration
-   │   └── Programming Fundamentals
-   │
-   └── Specialization Track
-       ├── Ethical Hacking & Pen Testing
-       ├── Malware Analysis
-       └── Incident Response
+            if (!portfolioData.education) return 'No education data found.';
 
-📜 Certifications: [Add your certs here]
-`.trim(),
+            const eduList = portfolioData.education.map(e => `
+ [${e.period}]
+ 🎓 ${e.degree}
+ 🏛️  ${e.institution}
+ 📝 ${e.description}
+ ---------------------------------------------------`).join('\n');
+
+            return `[EDUCATION DATABASE ACCESSED]\n\n${eduList}\n\n→ Scrolling to Education section...`;
+        },
 
         contact: () => {
             setTimeout(() => {
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                const contactSection = document.getElementById('contact');
+                if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
             }, 500);
             const c = portfolioData.contact_info || {};
             return `[CONTACT INFORMATION]\n\n📧 Email:    ${c.email}\n💼 LinkedIn: ${c.linkedin}\n🐙 GitHub:   ${c.github}\n\n→ Scrolling to Contact section...`;
@@ -499,27 +537,27 @@ Available commands:
             `.trim()
         ],
 
-        'cat resume.txt': () => `
+        'cat resume.txt': () => {
+            const p = portfolioData.profile || {};
+            const about = p.about || {};
+            return `
 ╔═══════════════════════════════════════════╗
 ║            RESUME.TXT                     ║
 ╠═══════════════════════════════════════════╣
 ║                                           ║
-║  FULL-STACK WEB & SECURITY DEVELOPER      ║
+║  ${p.name || 'OUSSAMA ZAHID'}              ║
+║  ${p.role_main || ''}                     ║
 ║                                           ║
-║  Passionate about building secure,        ║
-║  scalable web applications and            ║
-║  protecting digital assets.               ║
-║                                           ║
-║  EXPERIENCE:                              ║
-║  • Web Development: X years               ║
-║  • Cybersecurity: X years                 ║
+║  ${about.summary_intro || ''} ${about.summary_highlight1 || ''}   ║
+║  ${about.summary_text1 || ''} ${about.summary_highlight2 || ''}   ║
 ║                                           ║
 ║  PHILOSOPHY:                              ║
 ║  "Security is not a product,              ║
 ║   but a process." - Bruce Schneier        ║
 ║                                           ║
 ╚═══════════════════════════════════════════╝
-`.trim(),
+`.trim();
+        },
 
         'cat contact_info.json': () => JSON.stringify(portfolioData.contact_info || {}, null, 2),
 
@@ -552,6 +590,7 @@ Available commands:
         games: () => {
             quitSnakeGame();
             initSnakeGame();
+
             return '[LAUNCHING ARCADE PROTOCOL]... Initializing Snake engine. Use ARROW KEYS to move. Press Q to quit.';
         },
         cv: () => {
@@ -624,21 +663,21 @@ Available commands:
 
     // --- Skills Tab Switching ---
     const skillsTabBtn = document.getElementById('skills-tab-btn');
-    const curriculumTabBtn = document.getElementById('curriculum-tab-btn');
+    const educationTabBtn = document.getElementById('education-tab-btn');
     const skillsContent = document.getElementById('skills-content');
-    const curriculumContent = document.getElementById('curriculum-content');
+    const educationContent = document.getElementById('education-content');
 
     skillsTabBtn.addEventListener('click', () => {
         skillsTabBtn.classList.add('active');
-        curriculumTabBtn.classList.remove('active');
+        educationTabBtn.classList.remove('active');
         skillsContent.classList.add('active');
-        curriculumContent.classList.remove('active');
+        educationContent.classList.remove('active');
     });
 
-    curriculumTabBtn.addEventListener('click', () => {
-        curriculumTabBtn.classList.add('active');
+    educationTabBtn.addEventListener('click', () => {
+        educationTabBtn.classList.add('active');
         skillsTabBtn.classList.remove('active');
-        curriculumContent.classList.add('active');
+        educationContent.classList.add('active');
         skillsContent.classList.remove('active');
     });
 
@@ -655,6 +694,80 @@ Available commands:
         setTimeout(() => toast.classList.add('hidden'), 5000);
     };
 
+    // --- Hacker Mode & Simulation ---
+    const hackerModeToggle = document.getElementById('hacker-mode-toggle');
+    const hackerTerminal = document.getElementById('hacker-terminal');
+    const hackerTerminalBody = document.getElementById('hacker-terminal-body');
+
+    hackerModeToggle.addEventListener('change', () => {
+        document.body.classList.toggle('hacker-mode-active');
+        if (!hackerModeToggle.checked) {
+            hackerTerminal.classList.add('hidden');
+        }
+    });
+
+    const addSimulationLine = (text, color = 'white', delay = 500) => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.style.color = color;
+                line.innerHTML = text;
+                hackerTerminalBody.appendChild(line);
+                hackerTerminalBody.scrollTop = hackerTerminalBody.scrollHeight;
+                resolve();
+            }, delay);
+        });
+    };
+
+    const runSimulation = async (formData) => {
+        hackerTerminal.classList.remove('hidden');
+        hackerTerminalBody.innerHTML = '';
+
+        await addSimulationLine('[*] Initiating secure connection...', 'var(--primary)', 800);
+        await addSimulationLine('[*] Establishing tunnel via anonymous proxies...', 'white', 1000);
+
+        // Progress bar simulation
+        let progress = 0;
+        const progressLine = document.createElement('div');
+        progressLine.className = 'terminal-line progress-bar';
+        hackerTerminalBody.appendChild(progressLine);
+
+        while (progress <= 100) {
+            const bars = '#'.repeat(Math.floor(progress / 5));
+            const dots = '.'.repeat(20 - Math.floor(progress / 5));
+            progressLine.innerHTML = `[*] Encrypting message: [${bars}${dots}] ${progress}%`;
+            progress += 10;
+            await new Promise(r => setTimeout(r, 200));
+        }
+
+        await addSimulationLine('[✓] PGP Encryption successful', '#4ade80', 500);
+        await addSimulationLine('[*] Tracing user session IP...', 'white', 800);
+
+        let ip = '127.0.0.1';
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            ip = data.ip;
+        } catch (e) {
+            console.error('IP fetch failed', e);
+        }
+
+        await addSimulationLine(`[*] IP Captured: <span style="color:var(--primary)">${ip}</span>`, 'white', 1000);
+        await addSimulationLine(`[*] Scanning vulnerabilities on target node...`, 'white', 1200);
+        await addSimulationLine(`[!] WARNING: Potential intrusion detected!`, '#ef4444', 500);
+        await addSimulationLine(`[*] Bypassing firewall...`, 'white', 1000);
+        await addSimulationLine(`[✓] ACCESS GRANTED. System compromised.`, '#4ade80', 1500);
+        await addSimulationLine(`[*] Injecting message payload into master database...`, 'white', 1000);
+        await addSimulationLine(`[✓] SUCCESS: Message delivered securely!`, '#4ade80', 1000);
+        await addSimulationLine(`[!] NOTE: This was a simulation. No real systems were harmed.`, '#eab308', 2000);
+
+        // Save to local storage
+        const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+        submissions.push({ ...formData, ip, timestamp: new Date().toISOString() });
+        localStorage.setItem('submissions', JSON.stringify(submissions));
+    };
+
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -664,19 +777,41 @@ Available commands:
 
         if (!name || !email || !message) return;
 
-        // Simulate submission
-        btnText.classList.add('hidden');
-        btnLoader.classList.remove('hidden');
-        contactForm.querySelector('button').disabled = true;
+        const formData = { name, email, message };
 
-        await new Promise(r => setTimeout(r, 1500));
+        if (hackerModeToggle && hackerModeToggle.checked) {
+            // Hacker Simulation Flow
+            contactForm.querySelector('button').disabled = true;
+            await runSimulation(formData);
+            contactForm.querySelector('button').disabled = false;
+            contactForm.reset();
+        } else {
+            // Normal Flow
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            contactForm.querySelector('button').disabled = true;
 
-        btnText.classList.remove('hidden');
-        btnLoader.classList.add('hidden');
-        contactForm.querySelector('button').disabled = false;
-        contactForm.reset();
+            await new Promise(r => setTimeout(r, 1500));
 
-        showToast('Message Sent!', "Thank you for reaching out. I'll get back to you soon.");
+            btnText.classList.remove('hidden');
+            btnLoader.classList.add('hidden');
+            contactForm.querySelector('button').disabled = false;
+            contactForm.reset();
+            showToast('Message Sent!', "Thank you for reaching out. I'll get back to you soon.");
+        }
+    });
+
+    // Handle "rm -rf /" Easter Egg
+    terminalForm.addEventListener('submit', async (e) => {
+        const input = terminalInput.value.trim().toLowerCase();
+        if (input === 'rm -rf /') {
+            e.preventDefault();
+            terminalInput.value = '';
+            addLine('[!] ERROR: Permission denied.', 'error');
+            addLine('[!] Critical system files protected by V-Sentinel.', 'error');
+            addLine('[*] Nice try! But you can\'t delete me that easily. 😉', 'output');
+            return;
+        }
     });
 
     // --- Footer Year ---

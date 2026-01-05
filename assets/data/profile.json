@@ -1,0 +1,229 @@
+{
+    "site": {
+        "title": "Portfolio | Oussama Zahid",
+        "description": "Full-Stack Web · Analyste Cybersécurité (en formation)",
+        "footer_text": "Built with HTML5 + CSS3 + JavaScript",
+        "copyright_year": "2024"
+    },
+    "profile": {
+        "name": "OUSSAMA ZAHID",
+        "role_line1": "<",
+        "role_main": "Full-Stack Web | Analyste Cybersécurité",
+        "role_line1_end": "/>",
+        "description_prefix": "Je construis des applis web solides et sécurisées tout en apprenant à défendre les systèmes.",
+        "description_highlight": "Secure-by-Design",
+        "description_suffix": "et développement full-stack (React, Node, Python).",
+        "description_highlight2": "Ouvert aux stages / postes junior — je cherche des missions où je peux coder proprement et rendre les applis plus sûres.",
+        "avatar": "assets/images/PROFILE.png",
+        "socials": [
+            {
+                "name": "GitHub",
+                "url": "https://github.com/VIGABANC",
+                "icon": "fab fa-github",
+                "class": "btn-github"
+            },
+            {
+                "name": "LinkedIn",
+                "url": "https://linkedin.com/in/oussamazahid",
+                "icon": "fab fa-linkedin",
+                "class": "btn-linkedin"
+            },
+            {
+                "name": "Email",
+                "url": "mailto:ossamazahid3@gmail.com",
+                "icon": "fas fa-envelope",
+                "class": "btn-email"
+            }
+        ],
+        "about": {
+            "summary_intro": "Je suis un",
+            "summary_highlight1": "Développeur Full-Stack",
+            "summary_text1": "et",
+            "summary_highlight2": "Analyste Cybersécurité en formation",
+            "summary_text2": "diplômé de l'OFPPT. Actuellement en Licence LIDSED (SupTech) et formation JobInTech. Mon objectif est de devenir spécialiste en sécurité applicative avec des pratiques secure-by-design.",
+            "methodology": "Ma méthodologie s'appuie sur le Secure-by-design, la curiosité pour la data et une approche pratique via des prototypes et scripts d'automatisation."
+        }
+    },
+    "skills": [
+        {
+            "name": "React / Next.js",
+            "icon": "fab fa-react",
+            "level": 90,
+            "category": "Frontend"
+        },
+        {
+            "name": "TypeScript",
+            "icon": "fas fa-code-branch",
+            "level": 85,
+            "category": "Frontend"
+        },
+        {
+            "name": "Node.js",
+            "icon": "fab fa-node-js",
+            "level": 85,
+            "category": "Backend"
+        },
+        {
+            "name": "Python",
+            "icon": "fab fa-python",
+            "level": 80,
+            "category": "Backend"
+        },
+        {
+            "name": "MySQL / PostgreSQL",
+            "icon": "fas fa-database",
+            "level": 75,
+            "category": "Database"
+        },
+        {
+            "name": "Docker",
+            "icon": "fab fa-docker",
+            "level": 70,
+            "category": "DevOps"
+        },
+        {
+            "name": "Linux",
+            "icon": "fab fa-linux",
+            "level": 85,
+            "category": "Systems"
+        },
+        {
+            "name": "Git",
+            "icon": "fab fa-git-alt",
+            "level": 90,
+            "category": "Tools"
+        },
+        {
+            "name": "OWASP ZAP",
+            "icon": "fas fa-shield-alt",
+            "level": 75,
+            "category": "Security"
+        },
+        {
+            "name": "Network Monitoring",
+            "icon": "fas fa-network-wired",
+            "level": 80,
+            "category": "Security"
+        }
+    ],
+    "education": [
+        {
+            "period": "Current",
+            "degree": "Licence en Informatique Décisionnelle (LIDSED)",
+            "institution": "SupTech Santé",
+            "description": "Licence (Bac+3) mêlant informatique, data et systèmes de santé : analytics, traitement de données, informatique médicale.",
+            "current": true
+        },
+        {
+            "period": "Current",
+            "degree": "Cybersecurity Analysis Training",
+            "institution": "JobInTech",
+            "description": "Formation intensive : analyses de vulnérabilités, secure coding, threat modeling, défensive cybersecurity.",
+            "current": true
+        },
+        {
+            "period": "2025",
+            "degree": "Web Developer Intern",
+            "institution": "Province of Fquih Ben Salah",
+            "description": "Développement et maintenance d’applications web gouvernementales — focus accessibilité, performance et conformité sécurité."
+        },
+        {
+            "period": "2023 – 2025",
+            "degree": "Diploma in Digital Development",
+            "institution": "ISTA Souk Sebt (OFPPT)",
+            "description": "Formation complète en développement web moderne, principes d’ingénierie logicielle, conception de solutions digitales."
+        }
+    ],
+    "projects": [
+        {
+            "title": "StayNest AI Builder",
+            "description": "AI-powered frontend builder prototype — rapid page generation, component scaffolding and visual editor.",
+            "tags": [
+                "JavaScript",
+                "AI",
+                "Frontend",
+                "Prototype"
+            ],
+            "image": "assets/images/staynest.png",
+            "links": {
+                "code": "https://github.com/VIGABANC/staynest-front-builder-ai",
+                "demo": "#"
+            }
+        },
+        {
+            "title": "Laravel React CRM",
+            "description": "Full-stack app: Laravel API + React frontend; auth, data models and integrated views.",
+            "tags": [
+                "Laravel",
+                "PHP",
+                "React",
+                "Full-stack"
+            ],
+            "image": "assets/images/laravel_react.png",
+            "links": {
+                "code": "https://github.com/VIGABANC/laravel_react",
+                "demo": "#"
+            }
+        },
+        {
+            "title": "Gestion de Tâches",
+            "description": "Task manager app demonstrating CRUD flows, state management and UX basics.",
+            "tags": [
+                "JavaScript",
+                "CRUD",
+                "State Management"
+            ],
+            "image": "assets/images/gestion_taches.png",
+            "links": {
+                "code": "https://github.com/VIGABANC/gestion_taches",
+                "demo": "#"
+            }
+        },
+        {
+            "title": "Project Stage",
+            "description": "Internship project with features deployed for a government site — accessibility & security improvements.",
+            "tags": [
+                "Internship",
+                "Accessibility",
+                "Security",
+                "JavaScript"
+            ],
+            "image": "assets/images/project_stage.png",
+            "links": {
+                "code": "https://github.com/VIGABANC/project_stage",
+                "demo": "#"
+            }
+        }
+    ],
+    "about_highlights": [
+        {
+            "title": "Secure-by-design",
+            "description": "J’intègre la sécurité dès la conception (input validation, auth hardening, least privilege).",
+            "image": "assets/images/Secure Code Practices.png"
+        },
+        {
+            "title": "Pratique hands-on",
+            "description": "Prototypes et scripts pour automatiser tests et déploiements.",
+            "image": "assets/images/highlight_fullstack.png"
+        },
+        {
+            "title": "Curiosité data",
+            "description": "Capacité à exploiter logs / metrics pour détection d’anomalies.",
+            "image": "assets/images/Network Monitor.png"
+        },
+        {
+            "title": "Anglais technique",
+            "description": "Lecture de docs, usage d’outils OSS.",
+            "image": "assets/images/Vulnerability Scanner.png"
+        }
+    ],
+    "contact_info": {
+        "name": "Oussama Zahid",
+        "role": "Analyste Cybersécurité & Développeur Web",
+        "email": "ossamazahid3@gmail.com",
+        "github": "https://github.com/VIGABANC",
+        "linkedin": "https://linkedin.com/in/oussamazahid",
+        "location": "Fquih Ben Salah, Morocco",
+        "status": "Ouvert aux stages & opportunités junior"
+    }
+}
