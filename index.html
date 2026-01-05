@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Nexus | Full-Stack Web </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-C1opHLqT.css">
+</head>
+
+<body class="bg-background text-foreground font-mono">
+    <!-- Matrix Background -->
+    <canvas id="matrix-canvas"></canvas>
+    <div class="global-scanlines"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo neon-text-cyan">
+                    <i class="fas fa-terminal icon-text"></i>
+                    <span>&lt;DEV/&gt;</span>
+                </a>
+
+                <div class="nav-links desktop-only">
+                    <a href="#home">HOME</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#skills">SKILLS</a>
+                    <a href="#projects">PROJECTS</a>
+                    <a href="#contact">CONTACT</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="mobile-only" aria-label="Toggle menu">
+                    <i class="fas fa-bars menu-icon"></i>
+                    <i class="fas fa-xmark close-icon hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu">
+            <div class="mobile-links">
+                <a href="#home"><span>&gt;</span> HOME</a>
+                <a href="#about"><span>&gt;</span> ABOUT</a>
+                <a href="#skills"><span>&gt;</span> SKILLS</a>
+                <a href="#projects"><span>&gt;</span> PROJECTS</a>
+                <a href="#contact"><span>&gt;</span> CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="glitch" data-text=""></h1>
+                <p class="hero-subtitle">
+                    <span class="text-accent">&lt;</span>
+                    <span id="role-text">Loading...</span>
+                    <span class="text-accent">/&gt;</span>
+                </p>
+                <p class="hero-description" id="hero-desc">
+                    <!-- Populated by JS -->
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary btn-glow">
+                        <i class="fas fa-folder-open icon-sm"></i>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-glow">
+                        <i class="fas fa-envelope icon-sm"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal -->
+            <div class="terminal-container">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="window-controls">
+                            <div class="control close"></div>
+                            <div class="control minimize"></div>
+                            <div class="control maximize"></div>
+                        </div>
+                        <span class="terminal-title">terminal@portfolio:~</span>
+                    </div>
+                    <div id="terminal-body" class="terminal-body">
+                        <!-- History will be injected here -->
+                        <div class="output-line">Welcome to the Terminal v1.0.0</div>
+                        <div class="output-line">Type "help" for available commands.</div>
+                        <div class="output-line">&nbsp;</div>
+
+                        <form id="terminal-form" class="input-line">
+                            <span class="prompt">$</span>
+                            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-indicator animate-bounce">
+                <i class="fas fa-arrow-down icon-lg"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section py-20">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;About Me /&gt;</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-visual">
+                        <div class="profile-frame">
+                            <div class="frame-glow animate-glow-pulse"></div>
+                            <div class="frame-inner"></div>
+                            <div class="profile-placeholder">
+                                <img src="" alt="Profile Image" class="profile-img" id="profile-img">
+                            </div>
+                            <div class="decor-box decor-tr animate-pulse"></div>
+                            <div class="decor-circle decor-bl animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    <div class="about-content">
+                        <div class="terminal-box">
+                            <div class="box-header">
+                                <span class="text-primary">$</span> cat about.md
+                            </div>
+                            <div id="about-text-container">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="highlights-grid" id="about-highlights">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section py-20 bg-card-muted">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;Skills & Education /&gt;</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="tab-switcher">
+                    <button id="skills-tab-btn" class="active">Technical Skills</button>
+                    <button id="education-tab-btn">Education</button>
+                </div>
+
+                <div id="skills-content" class="tab-content active">
+                    <div class="skills-grid" id="skills-grid-container">
+                        <!-- Skills generated by JS -->
+                    </div>
+                </div>
+
+                <div id="education-content" class="tab-content">
+                    <div class="education-grid" id="education-grid-container">
+                        <!-- Education generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section py-20">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;Projects /&gt;</h2>
+                    <div class="header-line"></div>
+                    <p class="section-desc">A showcase of my projects</p>
+                </div>
+
+                <div class="projects-grid" id="projects-grid-container">
+                    <!-- Projects generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section py-20 bg-card-muted relative overflow-hidden">
+            <div class="scanlines opacity-30"></div>
+            <div class="container relative z-10">
+                <div class="section-header text-center">
+                    <h2 class="neon-text-cyan">&lt;Contact /&gt;</h2>
+                    <div class="header-line"></div>
+                    <p class="section-desc">Ready to collaborate? Let's build something secure together.</p>
+                </div>
+
+                <div class="mode-toggle-container mb-12 flex justify-center items-center gap-4">
+                    <span class="text-sm font-mono text-muted-foreground uppercase tracking-widest">Normal Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hacker-mode-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="text-sm font-mono text-primary uppercase tracking-widest glow-text">Hacker Mode</span>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <!-- Simulation Terminal (Hidden by default) -->
+                        <div id="hacker-terminal" class="terminal-box hidden mb-8 border-primary glow-border">
+                            <div class="box-header flex justify-between items-center text-xs">
+                                <span>[SIMULATION_TERMINAL]</span>
+                                <span class="text-destructive animate-pulse">LIVE EXPLOIT</span>
+                            </div>
+                            <div id="hacker-terminal-body"
+                                class="terminal-body font-mono text-xs p-4 overflow-y-auto max-h-60">
+                                <!-- Sequence output here -->
+                            </div>
+                        </div>
+
+                        <div class="terminal-box">
+                            <div class="box-header">
+                                <span class="text-primary">$</span> cat contact_info.json
+                            </div>
+                            <div class="json-content font-mono text-sm" id="contact-json-container">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="social-links" id="social-links-container">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label><span class="text-primary">$</span> name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="text-primary">$</span> email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="text-primary">$</span> message</label>
+                            <textarea id="message" placeholder="Enter your message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-glow w-full">
+                            <span class="btn-text">
+                                <span><i class="fas fa-paper-plane"></i> Send Message</span>
+                            </span>
+                            <span class="btn-loader hidden">
+                                <div class="spinner"></div>
+                                Sending...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+
+                <footer class="footer">
+                    <p><span class="text-primary">&copy;</span> <span id="year"></span> Oussama Zahid. <span
+                            class="text-accent"> All rights reserved.</span></p>
+                    <p class="footer-sub"></p>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <h4 id="toast-title">Success</h4>
+            <p id="toast-desc">Message sent successfully!</p>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
