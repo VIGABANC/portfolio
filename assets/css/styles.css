@@ -1199,126 +1199,148 @@ canvas#matrix-canvas {
     color: #00a0dc !important;
 }
 
-/* Mode Toggle Switch */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
+.social-links .social-btn.btn-email:hover {
+    border-color: #ea4335 !important;
+    box-shadow: 0 0 20px rgba(234, 67, 53, 0.4) !important;
+    background-color: rgba(234, 67, 53, 0.05) !important;
+    transform: translateY(-5px) !important;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+.social-links .social-btn.btn-email:hover i {
+    color: #ea4335 !important;
 }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.form-group input,
+.form-group textarea {
     background-color: var(--secondary);
-    transition: .4s;
     border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: var(--foreground);
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 3px;
-    background-color: var(--muted-foreground);
-    transition: .4s;
-}
-
-input:checked+.slider {
-    background-color: hsla(185, 100%, 50%, 0.1);
+.form-group input:focus,
+.form-group textarea:focus {
     border-color: var(--primary);
-}
-
-input:checked+.slider:before {
-    transform: translateX(28px);
-    background-color: var(--primary);
-    box-shadow: 0 0 10px var(--primary);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-/* Hacker Mode Styles */
-body.hacker-mode-active {
-    --primary: #ff00ff;
-    /* Magenta highlight for hacker mode */
-}
-
-body.hacker-mode-active .neon-text-cyan {
-    color: var(--primary);
-    text-shadow: 0 0 20px var(--primary);
-}
-
-body.hacker-mode-active .btn-primary {
-    background: var(--primary);
-    box-shadow: 0 0 20px var(--primary);
-}
-
-.glow-border {
-    box-shadow: 0 0 15px var(--primary);
+    box-shadow: 0 0 10px hsla(185, 100%, 50%, 0.2);
 }
 
 /* Simulation Terminal */
-#hacker-terminal {
-    background: rgba(0, 0, 0, 0.9);
-    border-width: 2px;
+.simulation-terminal {
+    background-color: hsla(240, 20%, 3%, 0.95);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--foreground);
+    min-height: 350px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px hsla(185, 100%, 50%, 0.1);
 }
 
-.terminal-line {
-    margin-bottom: 0.25rem;
-    line-height: 1.4;
+.simulation-terminal .scanlines {
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
 }
 
-.progress-bar {
+.terminal-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.log-entry {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.log-entry.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.log-entry.success {
     color: var(--primary);
-    letter-spacing: 2px;
 }
 
-@keyframes crt-flicker {
-    0% {
-        opacity: 0.97;
-    }
-
-    5% {
-        opacity: 0.95;
-    }
-
-    10% {
-        opacity: 0.97;
-    }
-
-    15% {
-        opacity: 0.9;
-    }
-
-    20% {
-        opacity: 0.97;
-    }
-
-    100% {
-        opacity: 0.99;
-    }
+.log-entry.warning {
+    color: var(--accent);
 }
 
-#hacker-terminal-body {
-    animation: crt-flicker 0.1s infinite;
+.log-entry.error {
+    color: var(--destructive);
+}
+
+.log-entry.info {
+    color: #a9b1d6;
+}
+
+.simulation-disclaimer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid hsla(185, 100%, 50%, 0.1);
+    font-size: 0.75rem;
+    color: var(--destructive);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+.spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid hsla(240, 20%, 3%, 0.3);
+    border-top-color: var(--primary-foreground);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Footer */
+.footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.footer-sub {
+    font-size: 0.75rem;
+    opacity: 0.6;
 }
 
 /* Toast */

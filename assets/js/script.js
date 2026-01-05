@@ -594,8 +594,6 @@ Available commands:
             return '[LAUNCHING ARCADE PROTOCOL]... Initializing Snake engine. Use ARROW KEYS to move. Press Q to quit.';
         },
         cv: () => {
-            // Note: In real scenarios, path should be updated
-            // For now, assuming cv is in root or we can point to assets/docs/ if moved
             const link = document.createElement('a');
             link.href = 'cv final.pdf';
             link.download = 'Oussama_Zahid_CV.pdf';
@@ -603,6 +601,13 @@ Available commands:
             link.click();
             document.body.removeChild(link);
             return '';
+        },
+        rm: () => {
+            return [
+                "[*] rm: cannot remove '/': Permission denied",
+                "[!] Nice try, hacker. You can't break the matrix that easily.",
+                "[*] Monitoring suspicious activity... [LOGGED]"
+            ];
         }
     };
 
@@ -694,80 +699,6 @@ Available commands:
         setTimeout(() => toast.classList.add('hidden'), 5000);
     };
 
-    // --- Hacker Mode & Simulation ---
-    const hackerModeToggle = document.getElementById('hacker-mode-toggle');
-    const hackerTerminal = document.getElementById('hacker-terminal');
-    const hackerTerminalBody = document.getElementById('hacker-terminal-body');
-
-    hackerModeToggle.addEventListener('change', () => {
-        document.body.classList.toggle('hacker-mode-active');
-        if (!hackerModeToggle.checked) {
-            hackerTerminal.classList.add('hidden');
-        }
-    });
-
-    const addSimulationLine = (text, color = 'white', delay = 500) => {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                const line = document.createElement('div');
-                line.className = 'terminal-line';
-                line.style.color = color;
-                line.innerHTML = text;
-                hackerTerminalBody.appendChild(line);
-                hackerTerminalBody.scrollTop = hackerTerminalBody.scrollHeight;
-                resolve();
-            }, delay);
-        });
-    };
-
-    const runSimulation = async (formData) => {
-        hackerTerminal.classList.remove('hidden');
-        hackerTerminalBody.innerHTML = '';
-
-        await addSimulationLine('[*] Initiating secure connection...', 'var(--primary)', 800);
-        await addSimulationLine('[*] Establishing tunnel via anonymous proxies...', 'white', 1000);
-
-        // Progress bar simulation
-        let progress = 0;
-        const progressLine = document.createElement('div');
-        progressLine.className = 'terminal-line progress-bar';
-        hackerTerminalBody.appendChild(progressLine);
-
-        while (progress <= 100) {
-            const bars = '#'.repeat(Math.floor(progress / 5));
-            const dots = '.'.repeat(20 - Math.floor(progress / 5));
-            progressLine.innerHTML = `[*] Encrypting message: [${bars}${dots}] ${progress}%`;
-            progress += 10;
-            await new Promise(r => setTimeout(r, 200));
-        }
-
-        await addSimulationLine('[✓] PGP Encryption successful', '#4ade80', 500);
-        await addSimulationLine('[*] Tracing user session IP...', 'white', 800);
-
-        let ip = '127.0.0.1';
-        try {
-            const response = await fetch('https://api.ipify.org?format=json');
-            const data = await response.json();
-            ip = data.ip;
-        } catch (e) {
-            console.error('IP fetch failed', e);
-        }
-
-        await addSimulationLine(`[*] IP Captured: <span style="color:var(--primary)">${ip}</span>`, 'white', 1000);
-        await addSimulationLine(`[*] Scanning vulnerabilities on target node...`, 'white', 1200);
-        await addSimulationLine(`[!] WARNING: Potential intrusion detected!`, '#ef4444', 500);
-        await addSimulationLine(`[*] Bypassing firewall...`, 'white', 1000);
-        await addSimulationLine(`[✓] ACCESS GRANTED. System compromised.`, '#4ade80', 1500);
-        await addSimulationLine(`[*] Injecting message payload into master database...`, 'white', 1000);
-        await addSimulationLine(`[✓] SUCCESS: Message delivered securely!`, '#4ade80', 1000);
-        await addSimulationLine(`[!] NOTE: This was a simulation. No real systems were harmed.`, '#eab308', 2000);
-
-        // Save to local storage
-        const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
-        submissions.push({ ...formData, ip, timestamp: new Date().toISOString() });
-        localStorage.setItem('submissions', JSON.stringify(submissions));
-    };
-
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -777,42 +708,25 @@ Available commands:
 
         if (!name || !email || !message) return;
 
-        const formData = { name, email, message };
+        // Show loading state
+        btnText.classList.add('hidden');
+        btnLoader.classList.remove('hidden');
+        contactForm.querySelector('button').disabled = true;
 
-        if (hackerModeToggle && hackerModeToggle.checked) {
-            // Hacker Simulation Flow
-            contactForm.querySelector('button').disabled = true;
-            await runSimulation(formData);
-            contactForm.querySelector('button').disabled = false;
-            contactForm.reset();
-        } else {
-            // Normal Flow
-            btnText.classList.add('hidden');
-            btnLoader.classList.remove('hidden');
-            contactForm.querySelector('button').disabled = true;
+        // Simulate submission
+        await new Promise(r => setTimeout(r, 1500));
 
-            await new Promise(r => setTimeout(r, 1500));
+        // Reset form
+        btnText.classList.remove('hidden');
+        btnLoader.classList.add('hidden');
+        contactForm.querySelector('button').disabled = false;
+        contactForm.reset();
 
-            btnText.classList.remove('hidden');
-            btnLoader.classList.add('hidden');
-            contactForm.querySelector('button').disabled = false;
-            contactForm.reset();
-            showToast('Message Sent!', "Thank you for reaching out. I'll get back to you soon.");
-        }
+        // Show success message
+        showToast('Message Sent!', "Thank you for reaching out. I'll get back to you soon.");
     });
 
-    // Handle "rm -rf /" Easter Egg
-    terminalForm.addEventListener('submit', async (e) => {
-        const input = terminalInput.value.trim().toLowerCase();
-        if (input === 'rm -rf /') {
-            e.preventDefault();
-            terminalInput.value = '';
-            addLine('[!] ERROR: Permission denied.', 'error');
-            addLine('[!] Critical system files protected by V-Sentinel.', 'error');
-            addLine('[*] Nice try! But you can\'t delete me that easily. 😉', 'output');
-            return;
-        }
-    });
+
 
     // --- Footer Year ---
     document.getElementById('year').textContent = new Date().getFullYear();
